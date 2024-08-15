@@ -1,6 +1,6 @@
 // que. Create a JavaScript function that returns the Fibonacci sequence up to a given number, utilizing memoization for optimized performance.
 
-function fibonacci(n, memo = {}) {
+function fibonacci(n, memo = []) {
   // Base cases
   if (n === 0) return 0;
   if (n === 1) return 1;
