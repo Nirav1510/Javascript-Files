@@ -5,39 +5,40 @@ function myPromiseAll(taskList) {
   let promisesCompleted = 0;
 
   return new Promise((resolve, reject) => {
-    for (let i = 0; i < taskList.length; i++) {
-      taskList[i]
-        .then((res) => {
-          results[i] = res;
-          promisesCompleted += 1;
-          if (promisesCompleted === taskList.length) {
-            resolve(results);
-          }
-        })
-        .catch((err) => {
-          console.error(err);
-          reject(err);
-        });
-    }
-
-    // taskList.forEach((promise, index) => {
-    //   promise
-    //     .then((val) => {
-    //       results[index] = val;
+    // for (let i = 0; i < taskList.length; i++) {
+    //   taskList[i]
+    //     .then((res) => {
+    //       results[i] = res;
     //       promisesCompleted += 1;
-
     //       if (promisesCompleted === taskList.length) {
     //         resolve(results);
     //       }
     //     })
-
-    //     .catch((error) => {
-    //       console.log("err", error.message);
-    //       reject(error);
+    //     .catch((err) => {
+    //       console.error(err);
+    //       reject(err);
     //     });
-    // });
+    // }
+
+    taskList.forEach((promise, index) => {
+      promise
+        .then((val) => {
+          results[index] = val;
+          promisesCompleted += 1;
+
+          if (promisesCompleted === taskList.length) {
+            resolve(results);
+          }
+        })
+
+        .catch((error) => {
+          console.log("err", error.message);
+          reject(error);
+        });
+    });
   });
 }
+
 const resolvedApis = (time) => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
