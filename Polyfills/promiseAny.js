@@ -20,8 +20,22 @@ function myPromiseAny(taskList) {
   let result = "";
   let count = 0;
   return new Promise((resolve, reject) => {
-    for (let i = 0; i < taskList.length; i++) {
-      taskList[i]
+    // for (let i = 0; i < taskList.length; i++) {
+    //   taskList[i]
+    //     .then((res) => {
+    //       result = res;
+    //       resolve(result);
+    //     })
+    //     .catch((err) => {
+    //       count += 1;
+    //       if (count === taskList.length) {
+    //         reject(["Aggregate Error: All Promises rejected"]);
+    //       }
+    //     });
+    // }
+
+    taskList.forEach((task, index) => {
+      task
         .then((res) => {
           result = res;
           resolve(result);
@@ -29,10 +43,10 @@ function myPromiseAny(taskList) {
         .catch((err) => {
           count += 1;
           if (count === taskList.length) {
-            reject(["Aggregrate Error: All Promises rejected"]);
+            reject(["Aggregate Error: All Promises rejected"]);
           }
         });
-    }
+    });
   });
 }
 
