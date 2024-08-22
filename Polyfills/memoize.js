@@ -13,17 +13,33 @@ function memoize(fn) {
   };
 }
 
+function memoizeNew(fn, context) {
+  const cache = {};
+
+  return function (...args) {
+    const key = JSON.stringify(args);
+    if (cache[key]) {
+      return cache[key];
+    }
+    const result = fn.call(context || this, args);
+    cache[key] = result;
+    return result;
+  };
+}
+
 const demoFunc = (x, y) => {
   for (let i = 0; i < 100000; i++) {}
+  console.log(x * y);
   return x * y;
 };
 
 const memoizedFunc = memoize(demoFunc);
+const nonMemoized = demoFunc(1012, 2084324239);
 
 console.time("first");
-demoFunc(1012, 2089);
+memoizedFunc(1012, 2084324239);
 console.timeEnd("first");
 
 console.time("second");
-demoFunc(1012, 2089);
+memoizedFunc(1012, 2084324239);
 console.timeEnd("second");
