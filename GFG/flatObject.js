@@ -65,5 +65,5 @@ const flatObjectReduce = (obj) => {
   }, {});
 };
 
-const result = flatObjectReduce(object);
+const result = flatObject(object);
 console.log(result);
