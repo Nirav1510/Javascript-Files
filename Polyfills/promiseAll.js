@@ -5,22 +5,8 @@ function myPromiseAll(taskList) {
   let promisesCompleted = 0;
 
   return new Promise((resolve, reject) => {
-    // for (let i = 0; i < taskList.length; i++) {
-    //   taskList[i]
-    //     .then((res) => {
-    //       results[i] = res;
-    //       promisesCompleted += 1;
-    //       if (promisesCompleted === taskList.length) {
-    //         resolve(results);
-    //       }
-    //     })
-    //     .catch((err) => {
-    //       console.error(err);
-    //       reject(err);
-    //     });
-    // }
-
     taskList.forEach((promise, index) => {
+      if (taskList?.length === 0) resolve([]);
       promise
         .then((val) => {
           results[index] = val;
@@ -30,7 +16,6 @@ function myPromiseAll(taskList) {
             resolve(results);
           }
         })
-
         .catch((error) => {
           console.log("err", error.message);
           reject(error);
@@ -55,7 +40,7 @@ const rejectedApis = (time) => {
   });
 };
 
-let taskList = [resolvedApis(500), resolvedApis(2000), rejectedApis(1000)];
+let taskList = [resolvedApis(500), resolvedApis(2000), resolvedApis(1000)];
 
 myPromiseAll(taskList)
   .then((results) => {
