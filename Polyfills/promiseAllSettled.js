@@ -14,7 +14,7 @@ const rejectedApis = (time) => {
   });
 };
 
-let taskList = [resolvedApis(500), resolvedApis(2000), rejectedApis(1000)];
+let taskList = [resolvedApis(500), rejectedApis(2000), resolvedApis(1000)];
 
 function myPromiseAllSettled(taskList) {
   const results = [];
