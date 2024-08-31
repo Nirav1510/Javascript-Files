@@ -14,12 +14,11 @@ setTimeout(function () {
   console.log("setTimeout");
 }, 0);
 
-async1();
-
 new Promise(function (resolve) {
   console.log("promise1");
   resolve();
 }).then(function () {
+  async1();
   console.log("promise2");
 });
 
