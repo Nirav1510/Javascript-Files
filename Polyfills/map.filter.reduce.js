@@ -27,8 +27,6 @@ Array.prototype.myReduce = function (cb, initialValue) {
   return accumulator;
 };
 
-const sum = arr.myReduce((acc, curr) => {
-  return acc + curr;
-}, 0);
+const sum = arr.myReduce((a, b) => a + b, 0);
 
 console.log(sum);
