@@ -12,7 +12,7 @@ function curryAndSum(...args) {
 }
 
 console.log(curryAndSum(1, 2, 3, 4, 5));
-console.log(curryAndSum(1, 2, 3, 4)(5));
+// console.log(curryAndSum(1, 2, 3, 4)(5));
 console.log(curryAndSum(1)(2)(3)(4)(5));
 console.log(curryAndSum(1, 2, 3)(4, 5));
 console.log(curryAndSum(1, 2)(3, 4, 5));
