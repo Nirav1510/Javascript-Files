@@ -11,7 +11,8 @@ const startSplit = (str, idx, delimiter, result, length) => {
       str.substring(index + delimiter.length),
       index + delimiter.length,
       delimiter,
-      result
+      result,
+      length
     );
   } else {
     result.push(str);
