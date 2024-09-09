@@ -7,6 +7,7 @@ function myPromiseAll(taskList) {
   return new Promise((resolve, reject) => {
     taskList.forEach((promise, index) => {
       if (taskList?.length === 0) resolve([]);
+
       promise
         .then((val) => {
           results[index] = val;
@@ -40,7 +41,7 @@ const rejectedApis = (time) => {
   });
 };
 
-let taskList = [resolvedApis(500), rejectedApis(2000), resolvedApis(1000)];
+let taskList = [resolvedApis(500), resolvedApis(2000), resolvedApis(1000)];
 
 myPromiseAll(taskList)
   .then((results) => {
