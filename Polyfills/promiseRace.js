@@ -18,9 +18,10 @@ let taskList = [resolvedApis(500), resolvedApis(2000), rejectedApis(1000)];
 
 function myPromiseRace(taskList) {
   let result = "";
+
   return new Promise((resolve, reject) => {
-    for (let i = 0; i < taskList.length; i++) {
-      taskList[i]
+    taskList.forEach((task, i) => {
+      task
         .then((res) => {
           result = res;
           resolve(result);
@@ -28,7 +29,7 @@ function myPromiseRace(taskList) {
         .catch((err) => {
           reject(err);
         });
-    }
+    });
   });
 }
 
