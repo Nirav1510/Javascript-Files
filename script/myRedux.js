@@ -52,9 +52,11 @@ export const connect = (mapStateToProps, mapDispatchToProps) => {
             const stateProps = mapStateToProps
               ? mapStateToProps(store.getState())
               : {};
+
             const dispatchProps = mapDispatchToProps
               ? mapDispatchToProps(store.dispatch)
               : {};
+
             return <Component {...props} {...stateProps} {...dispatchProps} />;
           }}
         </ReduxContext.Consumer>
