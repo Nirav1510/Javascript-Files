@@ -1,5 +1,6 @@
 class EventEmitter {
   listeners = [];
+
   emit(eventName, data) {
     this.listeners
       .filter((listener) => listener?.name === eventName)
