@@ -42,4 +42,4 @@ function purchaseCar(currency, price) {
 
 purchaseCar.myCall(car1, "$", 1000000);
 purchaseCar.myApply(car1, ["$", 1000000]);
-purchaseCar.myBind(car1, "$", 1000000);
+purchaseCar.myBind(car1, "$", 1000000)();
