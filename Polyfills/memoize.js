@@ -18,7 +18,7 @@ function memoizeNew(fn, context) {
 
   return function (...args) {
     const key = JSON.stringify(args);
-    if (cache[key]) {
+    if (cache.hasOwnProperty(key)) {
       return cache[key];
     }
     const result = fn.call(context || this, args);
