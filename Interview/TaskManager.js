@@ -31,7 +31,7 @@ TaskRunner.prototype.runNext = function runNext() {
       this.runNext(); // Start the next task if available
     })
     .catch((err) => {
-      console.error("Task failed:", err);
+      console.error("Task failed :", err);
       this.running--; // Decrement running count on failure
       this.runNext(); // Start the next task if available
     });
