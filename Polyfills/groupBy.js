@@ -1,18 +1,20 @@
 const myGroupBy = (values, keySelector) => {
-  return values.reduce((acc, value) => {
+  const ans = {};
+
+  values.forEach((value) => {
     const key =
       typeof keySelector === "function"
         ? keySelector(value)
         : value[keySelector];
 
-    if (!acc[key]) {
-      acc[key] = [value];
+    if (!ans[key]) {
+      ans[key] = [value];
     } else {
-      acc[key].push(value);
+      ans[key].push(value);
     }
+  });
 
-    return acc;
-  }, {});
+  return ans;
 };
 
 const a = myGroupBy([6.1, 4.2, 6.3], Math.floor);
