@@ -40,3 +40,10 @@ const tree = {
 
 const adjList = convertToAdjList(tree);
 console.log(adjList);
+
+// ans:
+// 1: [2, 3]
+// 2: [4, 5]
+// 3: []
+// 4: []
+// 5: []
