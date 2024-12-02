@@ -37,6 +37,25 @@ const throttlePromises = (arr, max) => {
   });
 };
 
+const throttlePromisesNew = async (arr, max) => {
+  let result = [],
+    start = 0;
+
+  while (result.length < arr.length) {
+    const maxFetchCall = arr.slice(start, start + max);
+
+    try {
+      const res = await Promise.all(maxFetchCall.map((fn) => fn()));
+      result.push(...res);
+      start += max;
+    } catch (e) {
+      throw e;
+    }
+  }
+
+  return result;
+};
+
 const mockFetcher = () =>
   new Promise((resolve, reject) => {
     setTimeout(() => {
@@ -48,9 +67,9 @@ const mockFetcher2 = () =>
   new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve("error");
-    }, 3000);
+    }, 1000);
   });
 
-throttlePromises([mockFetcher, mockFetcher2, mockFetcher], 2)
+throttlePromisesNew([mockFetcher, mockFetcher2, mockFetcher], 2)
   .then((res) => console.log(res))
   .catch((e) => console.log(e));
