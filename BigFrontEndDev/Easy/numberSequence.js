@@ -1,3 +1,5 @@
+// https://bigfrontend.dev/problem/A-number-sequence
+
 const transform = (num) => {
   let currentDigit = "";
   let result = "";
@@ -28,4 +30,5 @@ const getNthNum = (n) => {
   return num;
 };
 
-console.log(getNthNum(5));
+console.log(getNthNum(5)); // 111221
+console.log(getNthNum(6)); // 312211
