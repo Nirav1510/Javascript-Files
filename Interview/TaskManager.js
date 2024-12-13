@@ -87,6 +87,17 @@ function exampleSimpleTask5() {
     }, 2000);
   });
 }
+
+function exampleSimpleTask6() {
+  console.log("executed 6");
+
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      console.log("Resolved 6");
+      resolve();
+    }, 4000);
+  });
+}
 // Mock Task Functions
 
 var r = new TaskRunner(3);
@@ -95,3 +106,4 @@ r.push(exampleSimpleTask2); // executes immediately
 r.push(exampleSimpleTask3); // executes immediately
 r.push(exampleSimpleTask4); // should wait until one of the running tasks completes
 r.push(exampleSimpleTask5); // should wait until one of the running tasks completes
+r.push(exampleSimpleTask6); // should wait until one of the running tasks completes
