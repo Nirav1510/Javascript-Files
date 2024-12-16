@@ -29,4 +29,21 @@ function fibonacciSequence(limit) {
   return sequence;
 }
 
+const fibonacciSequenceNew = (limit) => {
+  const sequence = [0, 1];
+
+  while (true) {
+    const nextFib =
+      sequence[sequence.length - 1] + sequence[sequence.length - 2];
+    if (nextFib > limit) {
+      break;
+    }
+    sequence.push(nextFib);
+  }
+
+  return sequence;
+};
+
 console.log(fibonacciSequence(100)); // Output: [0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89]
+
+console.log(fibonacciSequenceNew(100)); // Output: [0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89]
