@@ -1,9 +1,9 @@
 function once(func, context) {
   let ran;
 
-  return function () {
+  return function (...args) {
     if (func) {
-      ran = func.apply(context || this, arguments);
+      ran = func.apply(context || this, args);
       func = null;
     }
     return ran;
