@@ -10,7 +10,20 @@ function once(func, context) {
   };
 }
 
-const greet = once((x, y) => console.log("hello!", x, y));
+const onceNew = (func) => {
+  let result;
+  let hasRun = false;
+
+  return function (...args) {
+    if (!hasRun) {
+      result = func.apply(this, args);
+      hasRun = true;
+    }
+    return result;
+  };
+};
+
+const greet = onceNew((x, y) => console.log("hello!", x, y));
 
 greet(1, 2);
 greet();
