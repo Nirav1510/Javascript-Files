@@ -1,6 +1,6 @@
 // https://bigfrontend.dev/problem/longest-substring-with-unique-characters
 
-function longestUniqueSubstr(str) {
+const longestUniqueSubstr = (str) => {
   let start = 0;
   let ans = "";
   let ansLength = 0;
@@ -22,5 +22,8 @@ function longestUniqueSubstr(str) {
       ans = str.substring(start, end + 1);
     }
   }
+
   return ans;
-}
+};
+
+console.log(longestUniqueSubstr("abwqfcklabzbcbb"));
