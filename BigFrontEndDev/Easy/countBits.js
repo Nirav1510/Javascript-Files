@@ -8,3 +8,5 @@ function countBits(n) {
   }
   return count;
 }
+
+console.log(countBits(10));
