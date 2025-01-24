@@ -32,4 +32,3 @@ const getNthNum = (n) => {
 
 console.log(getNthNum(5)); // 111221
 console.log(getNthNum(6)); // 312211
-console.log(getNthNum(7));
