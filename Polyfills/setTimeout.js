@@ -1,47 +1,47 @@
 const createSetTimeOut = () => {
-  let timerId = 0;
-  let timerMap = {};
+	let timerId = 0;
+	let timerMap = {};
 
-  function mySetTimeoutPoly(cb, delay) {
-    let id = timerId++;
-    timerMap[id] = { cb, delay, startTime: Date.now() };
+	function mySetTimeoutPoly(cb, delay) {
+		let id = timerId++;
+		timerMap[id] = { cb, delay, startTime: Date.now() };
 
-    checkTimer(id);
+		checkTimer(id);
 
-    return id;
-  }
+		return id;
+	}
 
-  function checkTimer(id) {
-    if (!timerMap[id]) return;
+	function checkTimer(id) {
+		if (!timerMap[id]) return;
 
-    const now = Date.now();
-    const elapsed = now - timerMap[id].startTime;
+		const now = Date.now();
+		const elapsed = now - timerMap[id].startTime;
 
-    if (elapsed >= timerMap[id].delay) {
-      timerMap[id].cb();
-      delete timerMap[id];
-    } else {
-      requestIdleCallback(() => checkTimer(id));
-    }
-  }
+		if (elapsed >= timerMap[id].delay) {
+			timerMap[id].cb();
+			delete timerMap[id];
+		} else {
+			requestIdleCallback(() => checkTimer(id));
+		}
+	}
 
-  function clearTimerPoly(id) {
-    delete timerMap[id];
-  }
+	function clearTimerPoly(id) {
+		delete timerMap[id];
+	}
 
-  return { mySetTimeoutPoly, clearTimerPoly };
+	return { mySetTimeoutPoly, clearTimerPoly };
 };
 
 const { mySetTimeoutPoly, clearTimerPoly } = createSetTimeOut();
 
-console.log("start");
+console.log('start');
 
 mySetTimeoutPoly(() => {
-  console.log("1");
+	console.log('1');
 }, 1000);
 
 mySetTimeoutPoly(() => {
-  console.log("2");
+	console.log('2');
 }, 2000);
 
-console.log("end");
+console.log('end');

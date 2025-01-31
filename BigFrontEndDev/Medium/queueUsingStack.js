@@ -13,38 +13,38 @@ class Stack {
 
 // you need to complete the following Class
 class Queue {
-  constructor() {
-    this.pushStack = new Stack();
-    this.popStack = new Stack();
-  }
+	constructor() {
+		this.pushStack = new Stack();
+		this.popStack = new Stack();
+	}
 
-  enqueue(element) {
-    // add new element to the rare
-    for (let i = 0; i < this.pushStack.size(); i++) {
-      this.popStack.push(this.pushStack.pop());
-    }
+	enqueue(element) {
+		// add new element to the rare
+		for (let i = 0; i < this.pushStack.size(); i++) {
+			this.popStack.push(this.pushStack.pop());
+		}
 
-    // now add the element to stack1
-    this.pushStack.push(element);
+		// now add the element to stack1
+		this.pushStack.push(element);
 
-    // transfer back
-    for (let i = 0; i < this.popStack.size(); i++) {
-      this.pushStack.push(this.popStack.pop());
-    }
-  }
+		// transfer back
+		for (let i = 0; i < this.popStack.size(); i++) {
+			this.pushStack.push(this.popStack.pop());
+		}
+	}
 
-  peek() {
-    // get the head element
-    return this.pushStack.peek();
-  }
+	peek() {
+		// get the head element
+		return this.pushStack.peek();
+	}
 
-  size() {
-    // return count of element
-    return this.pushStack.size();
-  }
+	size() {
+		// return count of element
+		return this.pushStack.size();
+	}
 
-  dequeue() {
-    // remove the head element
-    return this.pushStack.pop();
-  }
+	dequeue() {
+		// remove the head element
+		return this.pushStack.pop();
+	}
 }

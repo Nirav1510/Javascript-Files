@@ -5,19 +5,19 @@
 //   Promise<{items: Array<{id: number}>}>
 
 const fetchListWithAmount = async (amount = 5) => {
-  // your code here
-  let result = [],
-    cursor;
+	// your code here
+	let result = [],
+		cursor;
 
-  while (result.length < amount) {
-    const { items } = await fetchList(cursor);
-    if (items.length > 0) {
-      result.push(...items);
-      cursor = items[items.length - 1].id;
-    } else {
-      break;
-    }
-  }
+	while (result.length < amount) {
+		const { items } = await fetchList(cursor);
+		if (items.length > 0) {
+			result.push(...items);
+			cursor = items[items.length - 1].id;
+		} else {
+			break;
+		}
+	}
 
-  return result.slice(0, amount);
+	return result.slice(0, amount);
 };

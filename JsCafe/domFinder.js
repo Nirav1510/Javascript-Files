@@ -1,40 +1,40 @@
 const getPathFromChildToParent = (child, parent) => {
-  let currentNode = child;
-  const pathArray = [];
+	let currentNode = child;
+	const pathArray = [];
 
-  while (currentNode !== parent) {
-    const parentElement = currentNode.parentNode;
-    const childrenArray = Array.from(parentElement.children);
-    const index = childrenArray.indexOf(currentNode);
+	while (currentNode !== parent) {
+		const parentElement = currentNode.parentNode;
+		const childrenArray = Array.from(parentElement.children);
+		const index = childrenArray.indexOf(currentNode);
 
-    pathArray.push(index);
-    currentNode = parentElement;
-  }
+		pathArray.push(index);
+		currentNode = parentElement;
+	}
 
-  return pathArray;
+	return pathArray;
 };
 
 const getValueFromPath = (root, path) => {
-  let currentNode = root;
+	let currentNode = root;
 
-  while (path.length > 0) {
-    const index = path.pop();
-    currentNode = currentNode.children[index];
-  }
-  return currentNode.innerText;
+	while (path.length > 0) {
+		const index = path.pop();
+		currentNode = currentNode.children[index];
+	}
+	return currentNode.innerText;
 };
 
 const findNodeValue = () => {
-  const rootA = document.getElementById("rootA");
-  const rootB = document.getElementById("rootB");
-  const nodeA = document.querySelector("#nodeA");
-  console.log(nodeA.innerText);
+	const rootA = document.getElementById('rootA');
+	const rootB = document.getElementById('rootB');
+	const nodeA = document.querySelector('#nodeA');
+	console.log(nodeA.innerText);
 
-  const path = getPathFromChildToParent(nodeA, rootA);
+	const path = getPathFromChildToParent(nodeA, rootA);
 
-  const ans = getValueFromPath(rootB, path);
-  console.log("ans", ans);
-  return ans;
+	const ans = getValueFromPath(rootB, path);
+	console.log('ans', ans);
+	return ans;
 };
 
 console.log(findNodeValue());

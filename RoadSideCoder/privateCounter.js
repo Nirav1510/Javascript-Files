@@ -1,21 +1,21 @@
 // Que. How would you use a closure to create a private counter?
 
 function Counter() {
-  var _counter = 0;
+	var _counter = 0;
 
-  function add(num) {
-    _counter += num;
-  }
+	function add(num) {
+		_counter += num;
+	}
 
-  function subtract(num) {
-    _counter -= num;
-  }
+	function subtract(num) {
+		_counter -= num;
+	}
 
-  function currentValue() {
-    return "current value: " + _counter;
-  }
+	function currentValue() {
+		return 'current value: ' + _counter;
+	}
 
-  return { add, subtract, currentValue };
+	return { add, subtract, currentValue };
 }
 
 const x = new Counter();

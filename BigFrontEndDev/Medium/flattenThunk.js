@@ -6,16 +6,16 @@
  */
 
 function flattenThunk(thunk) {
-  return function (callback) {
-    const _callback = (error, data) => {
-      if (error) {
-        callback(error);
-      } else if (typeof data == "function") {
-        data(_callback);
-      } else {
-        callback(error, data);
-      }
-    };
-    thunk(_callback);
-  };
+	return function (callback) {
+		const _callback = (error, data) => {
+			if (error) {
+				callback(error);
+			} else if (typeof data == 'function') {
+				data(_callback);
+			} else {
+				callback(error, data);
+			}
+		};
+		thunk(_callback);
+	};
 }

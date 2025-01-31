@@ -1,17 +1,17 @@
 // https://bigfrontend.dev/problem/create-a-sum
 
 function sum(num) {
-  function newSum(num2) {
-    if (num2) {
-      return sum(num + num2);
-    } else {
-      return num;
-    }
-  }
+	function newSum(num2) {
+		if (num2) {
+			return sum(num + num2);
+		} else {
+			return num;
+		}
+	}
 
-  newSum.valueOf = () => num;
-  console.log(num);
-  return newSum;
+	newSum.valueOf = () => num;
+	console.log(num);
+	return newSum;
 }
 
 const sum1 = sum(1);

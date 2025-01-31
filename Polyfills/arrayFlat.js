@@ -1,15 +1,15 @@
 const flattenArray = (arr) => {
-  let result = [];
+	let result = [];
 
-  arr.forEach((item) => {
-    if (Array.isArray(item)) {
-      result = [...result, ...flattenArray(item)];
-    } else {
-      result.push(item);
-    }
-  });
+	arr.forEach((item) => {
+		if (Array.isArray(item)) {
+			result = [...result, ...flattenArray(item)];
+		} else {
+			result.push(item);
+		}
+	});
 
-  return result;
+	return result;
 };
 
 // Example usage:

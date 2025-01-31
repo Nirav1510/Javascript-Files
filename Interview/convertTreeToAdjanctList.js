@@ -1,41 +1,41 @@
 function convertToAdjList(tree) {
-  const adjList = {};
+	const adjList = {};
 
-  function traverse(node) {
-    adjList[node.value] = [];
+	function traverse(node) {
+		adjList[node.value] = [];
 
-    node.children.forEach((child) => {
-      adjList[node.value].push(child.value);
-      traverse(child);
-    });
-  }
+		node.children.forEach((child) => {
+			adjList[node.value].push(child.value);
+			traverse(child);
+		});
+	}
 
-  traverse(tree);
+	traverse(tree);
 
-  return adjList;
+	return adjList;
 }
 
 const tree = {
-  value: 1,
-  children: [
-    {
-      value: 2,
-      children: [
-        {
-          value: 4,
-          children: [],
-        },
-        {
-          value: 5,
-          children: [],
-        },
-      ],
-    },
-    {
-      value: 3,
-      children: [],
-    },
-  ],
+	value: 1,
+	children: [
+		{
+			value: 2,
+			children: [
+				{
+					value: 4,
+					children: [],
+				},
+				{
+					value: 5,
+					children: [],
+				},
+			],
+		},
+		{
+			value: 3,
+			children: [],
+		},
+	],
 };
 
 const adjList = convertToAdjList(tree);
