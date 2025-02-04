@@ -66,7 +66,7 @@ const mockFetcher = () =>
 const mockFetcher2 = () =>
 	new Promise((resolve, reject) => {
 		setTimeout(() => {
-			resolve('error');
+			reject('error');
 		}, 1000);
 	});
 
