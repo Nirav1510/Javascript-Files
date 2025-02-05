@@ -3,11 +3,8 @@ function reverseWords(sentence) {
 	let left = 0,
 		right = words.length - 1;
 
-	// Swap words using two pointers
 	while (left < right) {
-		let temp = words[left];
-		words[left] = words[right];
-		words[right] = temp;
+		[words[left], words[right]] = [words[right], words[left]];
 
 		left++;
 		right--;
