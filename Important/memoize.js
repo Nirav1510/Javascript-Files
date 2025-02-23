@@ -1,5 +1,6 @@
-function safeStringify(value) {
+const safeStringify = (value) => {
 	const seen = new WeakSet();
+
 	return JSON.stringify(value, (key, val) => {
 		if (typeof val === 'object' && val !== null) {
 			if (seen.has(val)) {
@@ -9,9 +10,9 @@ function safeStringify(value) {
 		}
 		return val;
 	});
-}
+};
 
-function customMemoize(fn) {
+const customMemoize = (fn) => {
 	const cache = new Map();
 
 	function memoized(...args) {
@@ -27,7 +28,7 @@ function customMemoize(fn) {
 
 	memoized.cache = cache;
 	return memoized;
-}
+};
 
 // Example usage
 const complexFunction = (obj, b) => obj.a + b;
