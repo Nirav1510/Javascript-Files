@@ -4,23 +4,24 @@ const compressString = (str) => {
 	if (!str) return '';
 
 	const map = {};
+	const order = [];
 	let ans = '';
 
-	str.split('').forEach((char) => {
+	for (const char of str) {
 		if (map[char]) {
-			map[char] = map[char] + 1;
+			map[char]++;
 		} else {
 			map[char] = 1;
+			order.push(char);
 		}
-	});
+	}
 
-	Object.entries(map).forEach(([key, val]) => {
-		ans = ans + key + val;
-	});
+	for (const char of order) {
+		ans += char + map[char];
+	}
 
 	return ans;
 };
-
 // space complexity: O(1)
 const compressStringNew = (s) => {
 	if (!s) return '';
@@ -52,3 +53,6 @@ const compressStringNew = (s) => {
 
 	return ans;
 };
+
+// example usage
+console.log(compressString('444522999922233')); // "4351259432"
