@@ -36,3 +36,12 @@ browser.back(1); // back to google
 browser.forward(1); // forward to yahoo
 browser.visit('duckduckgo.com'); // forward history cleared
 browser.forward(1); // stays at duckduckgo
+
+// Output:
+// Visited: yahoo.com
+// Visited: bing.com
+// Back -> Current: yahoo.com
+// Back -> Current: google.com
+// Forward -> Current: yahoo.com
+// Visited: duckduckgo.com
+// Forward -> Current: duckduckgo.com
