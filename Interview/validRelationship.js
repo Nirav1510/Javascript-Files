@@ -1,3 +1,11 @@
+function dfs(node, graph, visited) {
+	if (visited.has(node)) return;
+	visited.add(node);
+	if (graph[node]) {
+		for (let child of graph[node]) dfs(child);
+	}
+}
+
 function validRelationship(list) {
 	const managerSet = new Set();
 	const reporteeSet = new Set();
@@ -27,14 +35,8 @@ function validRelationship(list) {
 
 	// DFS from leader
 	const visited = new Set();
-	function dfs(node) {
-		if (visited.has(node)) return;
-		visited.add(node);
-		if (graph[node]) {
-			for (let child of graph[node]) dfs(child);
-		}
-	}
-	dfs(leader);
+
+	dfs(leader, graph, visited);
 
 	// If not all members visited, then disconnected
 	return visited.size === allMembers.size;
