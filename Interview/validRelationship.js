@@ -2,7 +2,9 @@ function dfs(node, graph, visited) {
 	if (visited.has(node)) return;
 	visited.add(node);
 	if (graph[node]) {
-		for (let child of graph[node]) dfs(child);
+		for (let child of graph[node]) {
+			dfs(child, graph, visited);
+		}
 	}
 }
 
@@ -35,7 +37,6 @@ function validRelationship(list) {
 
 	// DFS from leader
 	const visited = new Set();
-
 	dfs(leader, graph, visited);
 
 	// If not all members visited, then disconnected
