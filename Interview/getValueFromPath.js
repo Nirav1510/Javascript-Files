@@ -97,3 +97,58 @@ const obj = {
 	console.log(await getValueFromPath(obj, 'x.y.z'));
 	// undefined (path does not exist)
 })();
+
+// new example usage
+const newObj = {
+	a: async () => ({
+		b: {
+			c: () => ({
+				d: 123,
+			}),
+		},
+	}),
+	x: {
+		y: () =>
+			Promise.resolve({
+				z: 'Middle Async Function',
+			}),
+	},
+	m: Promise.resolve({
+		n: {
+			o: () => ({
+				p: () => 'Deep function chain',
+			}),
+		},
+	}),
+	arr: async () => [
+		() => 'Index 0 Function',
+		Promise.resolve('Index 1 Promise'),
+		async () => ({ deep: 'Index 2 Async Function' }),
+	],
+};
+
+(async () => {
+	console.log(await getValueFromPath(newObj, 'a.b.c.d'));
+	// 123
+	// Function appears in the middle (a -> promise, b -> object, c -> function returning object)
+
+	console.log(await getValueFromPath(newObj, 'x.y.z'));
+	// "Middle Async Function"
+	// Function in the middle that returns a Promise resolving to object
+
+	console.log(await getValueFromPath(newObj, 'm.n.o.p'));
+	// "Deep function chain"
+	// Promise at start, function inside, another function deeper
+
+	console.log(await getValueFromPath(newObj, 'arr.0'));
+	// "Index 0 Function"
+	// Array element is a function
+
+	console.log(await getValueFromPath(newObj, 'arr.1'));
+	// "Index 1 Promise"
+	// Array element is a Promise
+
+	console.log(await getValueFromPath(newObj, 'arr.2.deep'));
+	// "Index 2 Async Function"
+	// Array element is an async function returning an object
+})();
